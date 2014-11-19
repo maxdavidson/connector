@@ -1,0 +1,12 @@
+.DS_Store
+.idea/
+.settings/
+.project
+packages
+*.iml
+*.ipr
+*.iws
+*.dart.js
+*.js_
+*.js.deps
+*.js.map
