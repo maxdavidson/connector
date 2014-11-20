@@ -1,5 +1,6 @@
 connector
 =========
+[![Build Status](https://drone.io/github.com/maxdavidson/connector/status.png)](https://drone.io/github.com/maxdavidson/connector/latest)
 
 A small Dart library that connects two remote points.
 

@@ -37,7 +37,7 @@ class Message {
 
   Message.decode(Map data) : type = new MessageType(data['type']), uuid = data['uuid'], uri = data['uri'], args = data['args'], kwargs = data['kwargs'];
 
-  Map _removeNullValues(Map map) =>
+  static Map _removeNullValues(Map map) =>
     new Map.fromIterable(map.keys.where((key) => map[key] != null), value: (key) => map[key]);
 
   Map encode() => _removeNullValues({
@@ -47,7 +47,6 @@ class Message {
       'args': args,
       'kwargs': kwargs
   });
-
 }
 
 final MESSAGE = new CodecAdapter<Message, Object>(

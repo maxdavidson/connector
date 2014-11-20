@@ -1,7 +1,6 @@
 name: connector
-description:
-  A two-way RPC/multiplexing library where everything is a stream.
-version: 0.0.1
+description: A two-way Dart RPC library that supports native Dart streams.
+version: 0.0.2
 author: Max Davidson <davidsonmax@gmail.com>
 dependencies:
   quiver: ">=0.19.0 <0.20.0"

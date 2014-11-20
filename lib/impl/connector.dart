@@ -1,8 +1,6 @@
 part of connector;
 
-/**
- * Recursively converts anything into an asynchronously flattened stream
- */
+/// Recursively converts anything into an asynchronously flattened stream
 Stream _convertToStream(input) => ((input is Stream)
   ? (input as Stream).asyncExpand(_convertToStream)
   : (input is Future)
@@ -81,9 +79,7 @@ class _Connector implements Connector {
 
   }
 
-  /**
-   * Subscribe to a method defined on a different connector
-   */
+  /// Subscribe to a method defined on a different connector
   Stream subscribe(String uri, {List args, Map kwargs}) {
 
     // Create the request message. UUID is generate automatically
@@ -121,16 +117,12 @@ class _Connector implements Connector {
 
   Future call(String uri, {List args, Map kwargs}) => subscribe(uri, args: args, kwargs: kwargs).single;
 
-  /**
-   * Attach an event handler to a pattern
-   */
-  void on(Pattern pattern, Function fn) =>
+  /// Attach an event handler to a pattern
+  on(Pattern pattern, Function fn) =>
     handlers.add((pattern is String) ? new RegExp(pattern) : pattern, fn);
 
-  /**
-   * Cancel all active local subscriptions
-   */
-  void close() {
+  /// Cancel all active local subscriptions
+  close() {
     _subscriptions
       ..values.forEach((val) => val.cancel())
       ..keys.forEach(_subscriptions.remove);
@@ -140,6 +132,6 @@ class _Connector implements Connector {
   final _onClose = new Completer();
   Future get onClose => _onClose.future;
 
-  Iterable<StreamSubscription> get subscriptions => this._subscriptions.values;
+  Iterable<StreamSubscription> get subscriptions => _subscriptions.values;
 
 }

@@ -7,10 +7,9 @@ import 'dart:typed_data';
 import 'bus.dart';
 import 'codec.dart';
 
-/**
- * Adapts the browser-based WebSocket object the Bus interface.
- * Attempts to reconnect if connection fails.
- */
+
+/// Adapts the browser-based [WebSocket] object the [Bus] interface.
+/// Attempts to reconnect if connection fails.
 class WebSocketBus<T> extends Bus<T> {
 
   // Input events come from different places and need to be joined into one stream
@@ -64,10 +63,8 @@ class WebSocketBus<T> extends Bus<T> {
 
 }
 
-/**
- * A binary WebSocket class that converts streams
- * of ByteBuffers to streams of List<int>
- */
+/// A binary WebSocket class that converts [Stream]s
+/// of [ByteBuffer] to streams of [List<int>]
 class BinaryWebSocketBus extends Bus<List<int>> {
   static final binaryCodec = new CodecAdapter<List<int>, ByteBuffer>(
           (List<int> list) => new Uint8List.fromList(list).buffer,
